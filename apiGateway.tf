@@ -144,9 +144,9 @@ resource "aws_api_gateway_deployment" "api" {
 
   # Redeploy when there are new updates
   triggers = {
-    redeployment = sha1(join(",", list(
+    redeployment = sha1(join(",", [
       jsonencode(aws_api_gateway_integration.api),
-    )))
+    ]))
   }
 
   lifecycle {
